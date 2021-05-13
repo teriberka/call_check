@@ -44,7 +44,7 @@ def insert_test_call_info(anum, bnum, test_id):
     x = conn.cursor()
 
     try:
-        sql = "insert into test_call (anum, bnum, time, direction, test_id) values " \
+        sql = "insert into check_call (callerid, phone, time, direction, test_id) values " \
               "('{}', '{}', (select now()), {}, '{}')".format(anum, bnum, 0, test_id)
 
         print(" sql = {} ".format(sql))
@@ -62,9 +62,9 @@ def select_test_call_info(bnum):
     x = conn.cursor()
 
     try:
-        select_request = "select direction from test_call where " \
+        select_request = "select direction from check_call where " \
                          "ROUND(TIME_TO_SEC(timediff(CURRENT_TIMESTAMP, time))) <= {} " \
-                         "and bnum like '%{}' " \
+                         "and phone like '%{}' " \
                          "and status={}".format(SELECT_DELAY, str(bnum)[5::], 0)
 
         print("try to find income test call, sql = {} ".format(select_request))
