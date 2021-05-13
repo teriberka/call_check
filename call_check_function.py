@@ -23,7 +23,7 @@ def click_to_call(phone_to_dial, username, password, local_user, test_id):
         'password': password,
         'local_user': local_user,
         'test_id': test_id,
-        'callerd': callerid}
+        'callerid': callerid}
 
     s = socket.socket()
     s.connect((ast_host, ast_port))

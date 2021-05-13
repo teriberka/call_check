@@ -18,7 +18,7 @@ if __name__ == '__main__':
         insert_test_call_info(callerid, phone, test_id)
 
         logging.info("{} | {} | init call to SIP user {}".format(time_now(TIME_PREFIX), test_id, phone))
-        click_to_call(phone, username=ast_username, password=ast_userpass, local_user=callerid, test_id)
+        click_to_call(phone, username=ast_username, password=ast_userpass, local_user=callerid, test_id=test_id)
 
         print('sleep start')
         logging.info("{} | {} | start sleep pause {}".format(time_now(TIME_PREFIX), test_id, SLEEP_PAUSE))
