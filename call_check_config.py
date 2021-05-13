@@ -11,9 +11,9 @@ REDSMS_ROUTE = 'sms'
 # mysql connect param:
 db_host = '127.0.0.1'
 db_port = 3306
-db_user = "root"
-db_password = "dctvgfhjkm"
-db_database = "alarm"
+db_user = "admin"
+db_password = "c@ll!ch3ck"
+db_database = "asterisk"
 
 # Asterisk param:
 ast_username = 'checker'
