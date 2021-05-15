@@ -2,12 +2,6 @@
 # coding=utf-8
 
 
-# REDSMS var:
-REDSMS_URL = 'https://cp.redsms.ru/api/message'
-REDSMS_API_KEY = '52483a055a96d4e918fee0b8aed54f07fe06270e11'
-REDSMS_LOGIN = 'lptracker'
-REDSMS_ROUTE = 'sms'
-
 # mysql connect param:
 db_host = '127.0.0.1'
 db_port = 3306
@@ -31,7 +25,7 @@ ActionID: 2
 Channel: Local/s@local
 Exten: %(phone_to_dial)s
 Context: outbound
-Variable: test_id=%(test_id)s,callerid=%(callerid)s
+Variable: test_id=%(test_id)s,callerid=%(callerid)s,gsm_gw=%(gsm_gw)s
 priority: 1
 
 Action: Logoff
@@ -46,19 +40,22 @@ LOG_PATH = 'call_check.log'
 SLEEP_PAUSE = 30  # задержка между отправкой вызов и проверкой результата
 SELECT_DELAY = 45  # в рамках данного таймаута будем пытаться найти исх и вх вызов
 
-text = 'New telephony Alarm! Test call failed'
-
 phones = ('84996660209',
           '83832888809',
           '83432888809',
-          '78432707009',
-          '78462888809',
-          '78622606009',
-          '74712666609',
-          '73842222209',
-          '73843222209',
-          '78332666609',
-          '74712666609',
-          '74112666609')
+          '88432707009',
+          '88462888809',
+          '88622606009',
+          '84712666609',
+          '83842222209',
+          '83843222209',
+          '88332666609',
+          '84712666609',
+          '84112666609')
+
+gateways = ('gsm1',
+            'gsm2',
+            'gsm3',
+            'gsm4')
 
 callerid = '79163311455'

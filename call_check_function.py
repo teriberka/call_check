@@ -16,13 +16,14 @@ def time_now(time_prefix):
     return str(datetime.now().strftime(time_prefix))
 
 
-def click_to_call(phone_to_dial, username, password, local_user, test_id):
+def click_to_call(phone_to_dial, username, password, local_user, test_id, gateway):
     pattern = p % {
         'phone_to_dial': phone_to_dial,
         'username': username,
         'password': password,
         'local_user': local_user,
         'test_id': test_id,
+        'gsm_gw': gateway,
         'callerid': callerid}
 
     s = socket.socket()
@@ -39,13 +40,13 @@ def click_to_call(phone_to_dial, username, password, local_user, test_id):
     s.close()
 
 
-def insert_test_call_info(anum, bnum, test_id):
+def insert_test_call_info(anum, bnum, test_id, gateway):
     conn = MySQLdb.connect(host=db_host, port=db_port, user=db_user, passwd=db_password, db=db_database, charset='utf8')
     x = conn.cursor()
 
     try:
-        sql = "insert into check_call (callerid, phone, time, direction, test_id) values " \
-              "('{}', '{}', (select now()), {}, '{}')".format(anum, bnum, 0, test_id)
+        sql = "insert into check_call (callerid, phone, time, direction, test_id, gateway) values " \
+              "('{}', '{}', (select now()), {}, '{}', '{}')".format(anum, bnum, 0, test_id, gateway)
 
         print(" sql = {} ".format(sql))
         x.execute(sql)
