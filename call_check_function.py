@@ -58,43 +58,44 @@ def insert_test_call_info(anum, bnum, test_id, gateway):
         conn.close()
 
 
-def select_test_call_info(bnum):
+def select_inbound_call(test_id, direction, status):
     conn = MySQLdb.connect(host=db_host, port=db_port, user=db_user, passwd=db_password, db=db_database, charset='utf8')
     x = conn.cursor()
 
     try:
-        select_request = "select direction from check_call where " \
-                         "ROUND(TIME_TO_SEC(timediff(CURRENT_TIMESTAMP, time))) <= {} " \
-                         "and phone like '%{}' " \
-                         "and status={}".format(SELECT_DELAY, str(bnum)[5::], 0)
+        select_request = "select status from check_call where test_id={} " \
+                         "and direction={} " \
+                         "and status={}".format(test_id, direction, status)
 
-        print("try to find income test call, sql = {} ".format(select_request))
+        print("select inbound call, sql = {} ".format(select_request))
 
         x.execute(select_request)
-        result = x.fetchmany(FETCH_LIMIT)
+        result = x.fetchone()
         print('result = {}'.format(result))
         return result
 
     except:
-        print('something went wrong | try to find income test call')
+        print('something went wrong | try to select inbound call')
 
         conn.rollback()
         conn.close()
         return None
 
 
-def change_test_call_status(from_status, to_status):
+def update_call_status(test_id, status):
     conn = MySQLdb.connect(host=db_host, port=db_port, user=db_user, passwd=db_password, db=db_database, charset='utf8')
     x = conn.cursor()
 
     try:
-        sql = "update test_call set status = {} where status = {}".format(to_status, from_status)
-        print("change status from {} to {}, sql update: {} ".format(from_status, to_status, sql))
+        sql = "update check_call set status = {} where test_id = {}".format(status, test_id)
+        print('change status to {}, where test_id: {}'.format(status, test_id))
+        print('sql update: {} '.format(sql))
+
         x.execute(sql)
         conn.commit()
 
     except:
-        print('something went wrong | update')
+        print('something went wrong | try to update call status')
         conn.rollback()
         conn.close()
 
