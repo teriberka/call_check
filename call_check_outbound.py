@@ -34,7 +34,7 @@ if __name__ == '__main__':
             else:
                 print('Alarm!')
                 update_call_status(test_id, 2)
-                logging.info("{} | {} | Alarm!".format(time_now(TIME_PREFIX), test_id))
+                logging.info("{};{};{};{};{}".format(phone, time_now(TIME_PREFIX), gateway, test_id, result))
 
             time.sleep(DELAY)
 
