@@ -35,4 +35,7 @@ if __name__ == '__main__':
                 print('Alarm!')
                 update_call_status(test_id, 2)
                 logging.info("{} | {} | Alarm!".format(time_now(TIME_PREFIX), test_id))
+
+            time.sleep(DELAY)
+
     print('test end!')
