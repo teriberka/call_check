@@ -16,12 +16,12 @@ def time_now(time_prefix):
     return str(datetime.now().strftime(time_prefix))
 
 
-def click_to_call(phone_to_dial, username, password, local_user, test_id, gateway):
+def click_to_call(phone_to_dial, username, password, callerid, test_id, gateway):
     pattern = p % {
         'phone_to_dial': phone_to_dial,
         'username': username,
         'password': password,
-        'local_user': local_user,
+        # 'local_user': local_user,
         'test_id': test_id,
         'gsm_gw': gateway,
         'callerid': callerid}

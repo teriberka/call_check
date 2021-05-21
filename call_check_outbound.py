@@ -18,7 +18,7 @@ if __name__ == '__main__':
             # logging.info("{} | {} | Test start, anum={}, bnum={}".format(time_now(TIME_PREFIX), test_id, callerid, phone))
 
             insert_test_call_info(gateway[1], phone, test_id, gateway[0])
-            click_to_call(phone, username=ast_username, password=ast_userpass, local_user=gateway[1],
+            click_to_call(phone, username=ast_username, password=ast_userpass, callerid=gateway[1],
                           test_id=test_id, gateway=gateway[0])
 
             print('sleep start')
