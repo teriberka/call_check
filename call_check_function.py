@@ -34,7 +34,7 @@ def click_to_call(phone_to_dial, username, password, callerid, test_id, gateway)
         s.send(l + '\r\n')
         if l == "":
             data = s.recv(1024)
-            print data
+            # print data
     data = s.recv(1024)
 
     s.close()
