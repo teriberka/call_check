@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
             result = select_inbound_call(test_id, 1, 1)
 
-            if result == 1:
+            if result[0] == 1:
                 print('test was successfully completed')
                 update_call_status(test_id, 5)
             else:
