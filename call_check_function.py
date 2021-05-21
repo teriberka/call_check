@@ -104,4 +104,4 @@ def update_call_status(test_id, status):
 
 def write_alarm(phone, callerid, time, gateway, test_id, status):
     with open(ALARM_FILE_NAME, "w") as text_file:
-        text_file.write("{};{};{};{};{};{}\t".format(phone, callerid, time, gateway, test_id, status))
+        text_file.writelines("{};{};{};{};{};{}\n".format(phone, callerid, time, gateway, test_id, status))
