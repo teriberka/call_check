@@ -35,10 +35,12 @@ ActionID: 5
 
 # other param:
 TIME_PREFIX = '%Y-%m-%d %H:%M:%S'
-FETCH_LIMIT = 10
+
 LOG_PATH = 'call_check.log'
+ALARM_FILE_NAME = 'call_check.alarm'
+
 SLEEP_PAUSE = 15  # задержка между отправкой вызов и проверкой результата
-DELAY = 10  # в рамках данного таймаута будем пытаться найти исх и вх вызов
+DELAY = 2  # пауза между тестами
 
 phones = ('84996660209',
           '83832888809',
@@ -58,4 +60,3 @@ gateways = (('gsm1', 9831309165),
             ('gsm3', 89628346810),
             ('gsm4', 9538895175))
 
-callerid = '79163311455'
