@@ -53,14 +53,14 @@ if __name__ == '__main__':
                     logging.info("{} | {} | Alarm! test failed".format(time_now(TIME_PREFIX), test_id))
                     update_call_status(test_id, 2)
 
-                    write_alarm(phone, gateway[1], time, gateway[0], test_id, '2')
+                    write_alarm(phone, gateway[1], time_now(TIME_PREFIX), gateway[0], test_id, '2')
 
             except TypeError:
                 print('Alarm! test failed')
                 logging.info("{} | {} | Alarm! test failed".format(time_now(TIME_PREFIX), test_id))
                 update_call_status(test_id, 2)
 
-                write_alarm(phone, gateway[1], time, gateway[0], test_id, '2')
+                write_alarm(phone, gateway[1], time_now(TIME_PREFIX), gateway[0], test_id, '2')
 
             print('pause {} seconds between tests'.format(DELAY))
             logging.info("{} | {} | pause {} seconds between tests".
