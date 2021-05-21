@@ -43,11 +43,19 @@ if __name__ == '__main__':
             logging.info("{} | {} | check result".format(time_now(TIME_PREFIX), test_id))
             result = select_inbound_call(test_id, 1, 1)
 
-            if result[0] == 1:
-                print('Ok! test was successfully completed')
-                logging.info("{} | {} | Ok! test was successfully completed".format(time_now(TIME_PREFIX), test_id))
-                update_call_status(test_id, 5)
-            else:
+            try:
+                if result[0] == 1:
+                    print('Ok! test was successfully completed')
+                    logging.info("{} | {} | Ok! test was successfully completed".format(time_now(TIME_PREFIX), test_id))
+                    update_call_status(test_id, 5)
+                else:
+                    print('Alarm! test failed')
+                    logging.info("{} | {} | Alarm! test failed".format(time_now(TIME_PREFIX), test_id))
+                    update_call_status(test_id, 2)
+
+                    write_alarm(phone, gateway[1], time, gateway[0], test_id, status)
+
+            except TypeError:
                 print('Alarm! test failed')
                 logging.info("{} | {} | Alarm! test failed".format(time_now(TIME_PREFIX), test_id))
                 update_call_status(test_id, 2)
