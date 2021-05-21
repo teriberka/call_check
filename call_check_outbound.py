@@ -17,8 +17,9 @@ if __name__ == '__main__':
             test_id = random.randint(0, 999999999999)
             # logging.info("{} | {} | Test start, anum={}, bnum={}".format(time_now(TIME_PREFIX), test_id, callerid, phone))
 
-            insert_test_call_info(callerid, phone, test_id, gateway)
-            click_to_call(phone, username=ast_username, password=ast_userpass, local_user=callerid, test_id=test_id, gateway=gateway)
+            insert_test_call_info(gateway[1], phone, test_id, gateway[0])
+            click_to_call(phone, username=ast_username, password=ast_userpass, local_user=gateway[1],
+                          test_id=test_id, gateway=gateway[0])
 
             print('sleep start')
 
@@ -34,7 +35,7 @@ if __name__ == '__main__':
             else:
                 print('Alarm!')
                 update_call_status(test_id, 2)
-                logging.info("{};{};{};{};{}".format(phone, time_now(TIME_PREFIX), gateway, test_id, 2))
+                logging.info("{};{};{};{};{}".format(phone, time_now(TIME_PREFIX), gateway[0], test_id, 2))
 
             time.sleep(DELAY)
 
