@@ -1,5 +1,6 @@
 .idea
 call_check.log
+call_check.alarm
 call_check_config.pyc
 call_check_function.pyc
 
