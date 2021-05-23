@@ -36,11 +36,11 @@ ActionID: 5
 # other param:
 TIME_PREFIX = '%Y-%m-%d %H:%M:%S'
 
-LOG_PATH = 'call_check.log'
-ALARM_FILE_NAME = 'call_check.alarm'
+LOG_PATH = '/etc/asterisk/call_check/call_check.log'
+ALARM_FILE_NAME = '/etc/asterisk/call_check/call_check.alarm'
 
-SLEEP_PAUSE = 15  # задержка между отправкой вызов и проверкой результата
-DELAY = 2  # пауза между тестами
+SLEEP_PAUSE = 14  # задержка между отправкой вызов и проверкой результата
+DELAY = 1  # пауза между тестами
 
 phones = ('84996660209',
           '83832888809',

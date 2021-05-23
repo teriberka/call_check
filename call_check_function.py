@@ -99,8 +99,6 @@ def update_call_status(test_id, status):
         conn.rollback()
         conn.close()
 
-        logging.info("".format(phone, time_now(TIME_PREFIX), gateway[0], test_id, 2))
-
 
 def write_alarm(phone, callerid, time, gateway, test_id, status):
     with open(ALARM_FILE_NAME, 'a') as text_file:
